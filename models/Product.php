@@ -38,17 +38,13 @@ return $stmt;
 
   $stmt = $this->conn->prepare($query);
 
-
   // bind the data
-
 
   $stmt->bindParam(':sku', $this->sku);
   $stmt->bindParam(':name', $this->name);
   $stmt->bindParam(':price', $this->price);
   $stmt->bindParam(':type', $this->type);
   $stmt->bindParam(':value', $this->value);
-
-
 
   // execute query or error if something goes wrong
   if($stmt->execute()){

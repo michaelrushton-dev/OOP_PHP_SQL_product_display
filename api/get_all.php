@@ -14,7 +14,7 @@ $product = new Product($db);
 // Blog product query
 $result = $product->read();
 $num = $result->rowCount();
-print_r($num);
+
 //check if any products
 if($num>0){
   //product array
