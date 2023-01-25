@@ -36,27 +36,27 @@ return $stmt;
     type = :type,
     value = :value';
 
-  
-
   $stmt = $this->conn->prepare($query);
+
 
   // bind the data
 
 
-  $stmt->bindParam('sku', $this->sku);
-  $stmt->bindParam('name', $this->name);
-  $stmt->bindParam('price', $this->price);
-  $stmt->bindParam('type', $this->type);
-  $stmt->bindParam('value', $this->value);
+  $stmt->bindParam(':sku', $this->sku);
+  $stmt->bindParam(':name', $this->name);
+  $stmt->bindParam(':price', $this->price);
+  $stmt->bindParam(':type', $this->type);
+  $stmt->bindParam(':value', $this->value);
+
+
 
   // execute query or error if something goes wrong
-    $stmt->execute();
-  // if($stmt->execute()){
-  //   return true;
-  // } else {
-  //   print_r($stmt->error);
-  //   return false;
-  // };
+  if($stmt->execute()){
+    return true;
+  } else {
+      printf('error: %s. \n', $stmt->error);
+    return false;
+  };
 
 }
 

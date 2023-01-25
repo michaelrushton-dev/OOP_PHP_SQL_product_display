@@ -11,10 +11,10 @@ include_once '../models/Product.php';
 // Instantiate DB and connect to it
 $database = new Database();
 $db = $database->connect();
-//Instantiate a new BLOG Product object from Pproduct class
+//Instantiate a new Product object from Product class
 $product = new Product($db);
 
-// get the producted data
+// get the product data
 
 $data = json_decode(file_get_contents("php://input"));
 
@@ -35,3 +35,4 @@ if($product->create()){
     array('message' => 'Product not created')
   );
 }
+?>
