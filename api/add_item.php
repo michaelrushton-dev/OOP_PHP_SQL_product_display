@@ -8,15 +8,20 @@ Access-Control-Allow-Methods, Authorization, x-Requested-With');
 //brings in Database and Product classes
 include_once '../db/Database.php';
 include_once '../models/Product.php';
+include_once '../models/productTypes/Book.php';
+include_once '../models/productTypes/Furniture.php';
+include_once '../models/productTypes/Dvd.php';
 // Instantiate DB and connect to it
 $database = new Database();
 $db = $database->connect();
-//Instantiate a new Product object from Product class
-$product = new Product($db);
+
+// get data
+$data = json_decode(file_get_contents("php://input"));
+
+// new product called whatever type is
+$product = new $data->type($db);
 
 // get the product data
-
-$data = json_decode(file_get_contents("php://input"));
 
 $product->sku = $data->sku;
 $product->name = $data->name;
@@ -28,11 +33,11 @@ $product->value = $data->value;
 
 if($product->create()){
   echo json_encode(
-    array('message' => 'Product Created!')
+    array('message' => 'Product Created!'. $data->type)
   );
 } else {
   echo json_encode(
-    array('message' => 'Product not created')
+    array('message' => $data->type . ' not created')
   );
 }
 ?>
