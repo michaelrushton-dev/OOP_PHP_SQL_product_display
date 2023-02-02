@@ -1,4 +1,5 @@
 <?php
+
 //runs the script to actually get the data
 //Headers
 header('Access-Control-Allow-Origin: *');

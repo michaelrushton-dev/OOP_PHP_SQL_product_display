@@ -7,7 +7,7 @@ which will have attributes defined by the parent class as well as
 a unique attribute based on the type of item, which will be present in the newly
 created object, for example
 if the type is 'DVD' there will be a file size attriute in MBs, or if the
-item were a piece of furniture it would dispay it's dimentions.
+item were a piece of furniture it would dispay it's dimensions.
 <br>
 <br>
 _Still in dev stages_
