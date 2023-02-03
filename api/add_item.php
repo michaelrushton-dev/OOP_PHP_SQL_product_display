@@ -12,6 +12,7 @@ include_once '../models/productTypes/Book.php';
 include_once '../models/productTypes/Furniture.php';
 include_once '../models/productTypes/Dvd.php';
 // Instantiate DB and connect to it
+
 $database = new Database();
 $db = $database->connect();
 
@@ -20,6 +21,9 @@ $data = json_decode(file_get_contents("php://input"));
 
 // new product called whatever type is
 $product = new $data->type($db);
+$product->talk();
+
+// print_r($data);
 
 // get the product data
 
@@ -28,7 +32,13 @@ $product->name = $data->name;
 $product->price = $data->price;
 $product->type = $data->type;
 $product->value = $data->value;
+$product->size = $data->size;
+$product->weight = $data->weight;
+$product->dimensions = $data->dimensions;
 
+//uses updateValue() from Product class to update the unique attribute
+// of the incoming product (i.e weight, height or dimension)
+$product->updateValue($data->value);
 //create the product
 
 if($product->create()){
