@@ -37,7 +37,7 @@ $product->weight = $data->weight;
 $product->dimensions = $data->dimensions;
 
 //uses updateValue() from Product class to update the unique attribute
-// of the incoming product (i.e weight, height or dimension)
+// of the incoming product (i.e wht, height or dimension)
 $product->updateValue($data->value);
 //create the product
 

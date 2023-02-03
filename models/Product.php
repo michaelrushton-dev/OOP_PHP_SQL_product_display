@@ -14,10 +14,9 @@ class Product{
   public $weight;
   public $dimensions;
   //Constructor
- // makes the $conn variable to be $db as passed in on read.php when instantiating a new Post object
+ // makes the $conn variable to be $db as passed in when instantiating any new Product object
   public function __construct($db){
     $this->conn = $db;
-    // $this->type = $product_type;
   }
   
   //GETTERS - should they be needed
@@ -82,8 +81,21 @@ return $stmt;
 
 //DELETE
 
-public function delete(){
-  
+public function delete($list){
+
+    $query = 'DELETE from '
+    . $this->table .  ' WHERE id IN (' . $list . ');';
+
+ $stmt = $this->conn->prepare($query);
+
+ // execute query or error if something goes wrong
+ if($stmt->execute()){
+   echo 'deleted ' . $list;
+   return true;
+ } else {
+     printf('error: %s. \n', $stmt->error);
+   return false;
+ };
+}
 }
 
-}

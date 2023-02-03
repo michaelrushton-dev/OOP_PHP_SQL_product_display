@@ -29,6 +29,9 @@ if($num>0){
       'price'=> $price,
       'type'=> $type,
       'value'=> $value,
+      'size'=> $size,
+      'weight'=> $weight,
+      'dimensions'=> $dimensions,
     );
     //push to 'data'
     array_push($products_arr, $product_item);
