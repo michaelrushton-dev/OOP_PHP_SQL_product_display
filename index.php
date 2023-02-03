@@ -1,31 +1,46 @@
 <?php
-// use App\Router;
-// include_once('./Router/Router.php');
 
-// declare(strict_types=1);
+//runs the script to actually fetch all of the data
+//Headers
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
+//brings in Database and product classes
+include_once './db/Database.php';
+include_once './models/Product.php';
+// Instantiate DB and connect to it
+$database = new Database();
+$db = $database->connect();
+//Instantiate a new BLOG product object from Product class
+$product = new Product($db);
+// Blog product query
+$result = $product->read();
+$num = $result->rowCount();
 
-// echo 'bumcheek';
-
-// $router = new Router();
-
-// $router->get('/', function () {
-//   echo 'homepage';
-// }); 
-
-
-// $router->post('/', function () {
-//   echo 'create';
-// }); 
-
-
-// $router->delete('/', function () {
-//   echo 'delete';
-// }); 
-
-// // $router->run('/', function () {
-// //   echo 'delete';
-// // }); 
-
-
-
-?>
+//check if any products
+if($num>0){
+  //product array
+  $products_arr = array();
+  while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    extract($row);
+    $product_item = array(
+      'id' => $id,
+      'sku'=>$sku,
+      'name'=>$name,
+      'price'=> $price,
+      'type'=> $type,
+      'value'=> $value,
+      'size'=> $size,
+      'weight'=> $weight,
+      'dimensions'=> $dimensions,
+    );
+    //push to 'data'
+    array_push($products_arr, $product_item);
+  }
+  //turn to json and output
+  echo json_encode($products_arr);
+}else{
+  //no products
+  echo json_encode(
+    array('message' => ' '. $num .' products found')
+  );
+}
