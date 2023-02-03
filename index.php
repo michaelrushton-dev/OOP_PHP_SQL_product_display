@@ -1,30 +1,30 @@
 <?php
-use App\Router;
-include_once('./Router/Router.php');
+// use App\Router;
+// include_once('./Router/Router.php');
 
-declare(strict_types=1);
+// declare(strict_types=1);
 
-echo 'bumcheek';
+// echo 'bumcheek';
 
-$router = new Router();
+// $router = new Router();
 
-$router->get('/', function () {
-  echo 'homepage';
-}); 
-
-
-$router->post('/', function () {
-  echo 'create';
-}); 
+// $router->get('/', function () {
+//   echo 'homepage';
+// }); 
 
 
-$router->delete('/', function () {
-  echo 'delete';
-}); 
+// $router->post('/', function () {
+//   echo 'create';
+// }); 
 
-// $router->run('/', function () {
+
+// $router->delete('/', function () {
 //   echo 'delete';
 // }); 
+
+// // $router->run('/', function () {
+// //   echo 'delete';
+// // }); 
 
 
 

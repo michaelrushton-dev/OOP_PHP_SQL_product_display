@@ -10,17 +10,26 @@ class Product{
   public $price;
   public $type;
   public $value;
+  public $size;
+  public $weight;
+  public $dimensions;
   //Constructor
  // makes the $conn variable to be $db as passed in on read.php when instantiating a new Post object
   public function __construct($db){
     $this->conn = $db;
     // $this->type = $product_type;
   }
+  
+  //GETTERS - should they be needed
 
-  //SETTERS
+  public function getValue(){
+    return $this->value;
+  }
 
-  public function setType($type){
-    $this->type = $type;
+  //SETTERS - should they be needed
+
+  public function setValue($value){
+    $this->value = $value;
   }
 
   //GET posts
@@ -42,7 +51,10 @@ return $stmt;
     name = :name,
     price = :price,
     type = :type,
-    value = :value';
+    value = :value,
+    size = :size,
+    weight = :weight,
+    dimensions = :dimensions';
 
   $stmt = $this->conn->prepare($query);
 
@@ -51,8 +63,11 @@ return $stmt;
   $stmt->bindParam(':sku', $this->sku);
   $stmt->bindParam(':name', $this->name);
   $stmt->bindParam(':price', $this->price);
-  $stmt->bindParam(':value', $this->value);
   $stmt->bindParam(':type', $this->type);
+  $stmt->bindParam(':value', $this->value);
+  $stmt->bindParam(':size', $this->size);
+  $stmt->bindParam(':weight', $this->weight);
+  $stmt->bindParam(':dimensions', $this->dimensions);
 
   // execute query or error if something goes wrong
   if($stmt->execute()){
@@ -63,6 +78,12 @@ return $stmt;
     return false;
   };
 
+}
+
+//DELETE
+
+public function delete(){
+  
 }
 
 }
