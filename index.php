@@ -3,7 +3,10 @@
 //runs the script to actually fetch all of the data
 //Headers
 header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: http://127.0.0.1:5173');
 header('Content-Type: application/json');
+header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type,
+Access-Control-Allow-Methods, Authorization, x-Requested-With');
 //brings in Database and product classes
 include_once './db/Database.php';
 include_once './models/Product.php';
@@ -44,3 +47,4 @@ if($num>0){
     array('message' => ' '. $num .' products found')
   );
 }
+?>

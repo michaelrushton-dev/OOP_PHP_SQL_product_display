@@ -20,13 +20,11 @@ class Product{
   }
   
   //GETTERS - should they be needed
-
   public function getValue(){
     return $this->value;
   }
 
   //SETTERS - should they be needed
-
   public function setValue($value){
     $this->value = $value;
   }
@@ -58,7 +56,6 @@ return $stmt;
   $stmt = $this->conn->prepare($query);
 
   // bind the data
-
   $stmt->bindParam(':sku', $this->sku);
   $stmt->bindParam(':name', $this->name);
   $stmt->bindParam(':price', $this->price);
@@ -80,7 +77,6 @@ return $stmt;
 }
 
 //DELETE
-
 public function delete($list){
 
     $query = 'DELETE from '

@@ -12,7 +12,13 @@ There is also a 'mass delete' option to delete selected items from the database.
 <br>
 <br>
 
+# Instructions
+
+### GET
+
 To retreive all data from db, make a GET request to index.php
+
+### POST
 
 To add a product, send POST request to add_item.php and follow this json structure:
 
@@ -30,6 +36,8 @@ The application will instantiate a new product that extends the parent Product c
 The user can choose between 'Book', 'DVD' and 'Furniture'. It will add the value to the correct column in the database: the value to be supplied for books is their weight in grams, for DVDs it is their size in MBs, and for furniture it is their dimensions e.g 24x12x24.
 
 <br>
+
+### DELETE
 
 To delete one or more products, make a DELETE request to delete.php and follow this json structure, adding in the id's of the items to be deleted:
 

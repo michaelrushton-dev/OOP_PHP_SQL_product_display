@@ -12,21 +12,15 @@ include_once '../models/Product.php';
 include_once '../models/productTypes/Book.php';
 include_once '../models/productTypes/Furniture.php';
 include_once '../models/productTypes/Dvd.php';
-// Instantiate DB and connect to it
 
+// Instantiate DB and connect to it
 $database = new Database();
 $db = $database->connect();
 
 // get data
 $data = json_decode(file_get_contents("php://input"));
 
-//gets the array (called "list") of id's from the data object
-
-// print_r($data->list);
-
-// new product called whatever type is
 $product = new Product($db);
-// $product->delete();
 
 if($product->delete($data->list)){
   echo json_encode(

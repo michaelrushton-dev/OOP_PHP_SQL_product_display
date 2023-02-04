@@ -9,6 +9,7 @@ class Database{
   //Connect to DB
   public function connect(){
     $this->conn = null;
+    
   //creating new PDO object
     try {
       $this->conn = new PDO(
