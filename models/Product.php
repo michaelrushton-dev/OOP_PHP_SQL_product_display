@@ -67,7 +67,6 @@ return $stmt;
 
   // execute query or error if something goes wrong
   if($stmt->execute()){
-    echo 'added';
     return true;
   } else {
       printf('error: %s. \n', $stmt->error);
