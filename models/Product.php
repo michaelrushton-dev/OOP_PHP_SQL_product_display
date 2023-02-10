@@ -80,13 +80,12 @@ return $stmt;
 public function delete($list){
 
     $query = 'DELETE from '
-    . $this->table .  ' WHERE id IN (' . $list . ');';
+    . $this->table .' WHERE id IN (' . $list . ') ;';
 
  $stmt = $this->conn->prepare($query);
 
  // execute query or error if something goes wrong
  if($stmt->execute()){
-   echo 'deleted ' . $list;
    return true;
  } else {
      printf('error: %s. \n', $stmt->error);
