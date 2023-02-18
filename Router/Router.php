@@ -25,10 +25,11 @@ class Router
         header("Allow: *");
 
         //get the request uri from the request
+        // print_r($_SERVER["REQUEST_URI"]);
         $parts = explode("/", $_SERVER["REQUEST_URI"]);
-
+        // print_r($parts);
         // get the path after the initial slash
-        $url = "/" . $parts[2];
+        $url = "/" . $parts[1];
 
         // get the request method
         $method = strtolower($_SERVER['REQUEST_METHOD']);

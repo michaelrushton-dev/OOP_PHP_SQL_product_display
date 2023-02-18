@@ -2,10 +2,10 @@
 
 class Database{
   //DB params
-  private $host = 'sql107.epizy.com';
-  private $db_name = 'epiz_33599670_ecommerce';
-  private $username = 'epiz_33599670';
-  private $password = 'i40uXUMBMQ8JRc';
+  private $host = 'localhost';
+  private $db_name = 'id20303447_scandiweb';
+  private $username = 'id20303447_user123';
+  private $password = '@Xw*]+%zG#e5%A1e';
   private $conn;
   //Connect to DB
   public function connect(){
