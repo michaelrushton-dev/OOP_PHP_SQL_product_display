@@ -67,4 +67,3 @@ if($product->delete($data->list)){
     array('message' => $data->type . ' not deleted!')
   );
 }
-?>

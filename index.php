@@ -13,7 +13,7 @@ include_once './models/Product.php';
 // Instantiate DB and connect to it
 $database = new Database();
 $db = $database->connect();
-//Instantiate a new BLOG product object from Product class
+//Instantiate a new product object from Product class
 $product = new Product($db);
 // Blog product query
 $result = $product->read();
@@ -47,4 +47,3 @@ if($num>0){
     array('message' => ' '. $num .' products found')
   );
 }
-?>

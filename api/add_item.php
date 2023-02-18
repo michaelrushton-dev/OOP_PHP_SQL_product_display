@@ -49,4 +49,3 @@ if($product->create()){
     array('message' => $data->type . ' not created')
   );
 }
-?>
