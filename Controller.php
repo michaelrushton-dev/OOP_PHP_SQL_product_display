@@ -61,7 +61,7 @@ $db = $database->connect();
 $data = json_decode(file_get_contents("php://input"));
 
 // new product called whatever type is
-$product = new $data->type($db);
+$product = new $data->type;
 $product->talk();
 
 // print_r($data);
