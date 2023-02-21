@@ -18,6 +18,7 @@ class Database{
     $this->conn = null;
 
     try {
+      echo 'hello';
       $this->conn = new PDO(
         'mysql:host=' . $this->cleardb_url . ';port=3306;',  $this->cleardb_db,
           $this->cleardb_username, $this->cleardb_password
