@@ -1,21 +1,26 @@
 <?php
 
 class Database{
-  //DB params
-  private $host = 'localhost';
-  private $db_name = 'id20303447_scandiweb';
-  private $username = 'id20303447_user123';
-  private $password = '@Xw*]+%zG#e5%A1e';
+
+  private $cleardb_url    = parse_url(getenv('CLEARDB_DATABASE_URL'));
+  private $cleardb_server = $cleardb_url['host'];
+  private $cleardb_username = $cleardb_url['user'];
+  private $cleardb_password = $cleardb_url['pass'];
+  private $cleardb_db     = substr($cleardb_url['path'],1);
+
+  private $active_group = 'default';
+  private $query_builder = TRUE;
+
   private $conn;
-  //Connect to DB
+
+
   public function connect(){
     $this->conn = null;
 
-  //creating new PDO object
     try {
       $this->conn = new PDO(
-        'mysql:host=' . $this->host . ';port=3306;dbname=' . $this->db_name,
-          $this->username, $this->password
+        'mysql:host=' . $this->cleardb_url . ';port=3306;',  $this->cleardb_db,
+          $this->cleardb_username, $this->cleardb_password
       );
       $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }catch(PDOException $e){
