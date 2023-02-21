@@ -3,5 +3,5 @@
 
     RewriteCond %{REQUEST_FILENAME} !-f
 
-    RewriteRule ^ index.php [L]
+    RewriteRule ^ index.php [R=200, L]
 </IfModule>
