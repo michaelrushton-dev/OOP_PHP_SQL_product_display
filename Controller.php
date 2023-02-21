@@ -58,10 +58,10 @@ $database = new Database();
 $db = $database->connect();
 
 // get data
-
-$data = json_decode(file_get_contents("php://input"),true);
+$data = json_decode(file_get_contents("php://input"));
 
 // new product called whatever type is
+
 $product = new $data->type($db);
 $product->talk();
 
