@@ -58,38 +58,39 @@ $database = new Database();
 $db = $database->connect();
 
 // get data
-$data = json_decode(file_get_contents("php://input"));
 
+$data = (array) json_decode(file_get_contents("php://input"),true);
+$type = $data['type'];
 // new product called whatever type is
-$product = new $data->type($db);
+$product = new $type($db);
 $product->talk();
 
 // print_r($data);
 
 // get the product data
-$product->sku = $data->sku;
-$product->name = $data->name;
-$product->price = $data->price;
-$product->type = $data->type;
-$product->value = $data->value;
-$product->size = $data->size;
-$product->weight = $data->weight;
-$product->dimensions = $data->dimensions;
+$product->sku = $data['sku'];
+$product->name = $data['name'];
+$product->price = $data['price'];
+$product->type = $data['type'];
+$product->value = $data['value'];
+$product->size = $data['size'];
+$product->weight = $data['weight'];
+$product->dimensions = $data['dimensions'];
 
 //uses updateValue() from Product class to update the unique attribute
 // of the incoming product (i.e wht, height or dimension)
-$product->updateValue($data->value);
+$product->updateValue($data['value']);
 
 //create the product
 if($product->create()){
   http_response_code(200);
   echo json_encode(
-    array('message' => 'Product Created!'. $data->type)
+    array('message' => 'Product Created!'. $data['type'])
   );
 } else {
   http_response_code(500);
   echo json_encode(
-    array('message' => $data->type . ' not created')
+    array('message' => $data['type'] . ' not created')
   );
 }
 
