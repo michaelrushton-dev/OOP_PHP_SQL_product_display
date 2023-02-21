@@ -82,10 +82,12 @@ $product->updateValue($data->value);
 
 //create the product
 if($product->create()){
+  http_response_code(200);
   echo json_encode(
     array('message' => 'Product Created!'. $data->type)
   );
 } else {
+  http_response_code(500);
   echo json_encode(
     array('message' => $data->type . ' not created')
   );
@@ -111,10 +113,12 @@ if(!$data->list){
 }
 
 if($product->delete($data->list)){
+  http_response_code(200);
   echo json_encode(
     array('message' => 'Products Deleted!'. $data->type)
   );
 } else {
+  http_response_code(500);
   echo json_encode(
     array('message' => $data->type . ' not deleted!')
   );
