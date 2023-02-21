@@ -13,8 +13,6 @@ class Database{
 
   //creating new PDO object
     try {
-      echo $this->db_name;
-      echo 'heyyy';
       $this->conn = new PDO(
         'mysql:host=' . $this->host . ';port=3306;dbname=' . $this->db_name,
           $this->username, $this->password
