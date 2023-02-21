@@ -19,7 +19,7 @@ class Router
     {
         //allows cors access
         header("Content-Type: application/json; charset=UTF-8");
-        header('Access-Control-Allow-Origin: https://e-commerce-michael-rushton.herokuapp.com');
+        header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Headers: *");
         header("Access-Control-Allow-Methods: *");
         header("Allow: *");
