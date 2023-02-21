@@ -13,7 +13,13 @@ class Database{
 
   private $conn;
 
-
+  //DB params
+  // private $host = 'localhost';
+  // private $db_name = 'heroku_3483486d6599979';
+  // private $username = 'b9250cb20fb3ad';
+  // private $password = '500878a6';
+  // private $conn;
+  //Connect to DB
   public function connect(){
     $this->conn = null;
   $this->conn = mysqli_connect($this->cleardb_server, $this->cleardb_username, $this->cleardb_password, $this->cleardb_db);
