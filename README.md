@@ -16,11 +16,11 @@ There is also a 'mass delete' option to delete selected items from the database.
 
 ### GET
 
-To retreive all data from db, make a GET request to index.php
+To retreive all data from db, make a GET request to index.php (/)
 
 ### POST
 
-To add a product, send POST request to add_item.php and follow this json structure:
+To add a product, send POST request to /add_item and follow this json structure:
 
 ```json
 {
@@ -39,7 +39,7 @@ The user can choose between 'Book', 'DVD' and 'Furniture'. It will add the value
 
 ### DELETE
 
-To delete one or more products, make a DELETE request to delete.php and follow this json structure, adding in the id's of the items to be deleted:
+To delete one or more products, make a POST request to /delete and follow this json structure, adding in the id's of the items to be deleted:
 
 ```json
 {
