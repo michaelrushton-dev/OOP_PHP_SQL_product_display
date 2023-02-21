@@ -16,17 +16,17 @@ class Database{
 
   public function connect(){
     $this->conn = null;
-
-    try {
-      echo 'hello';
-      $this->conn = new PDO(
-        'mysql:host=' . $this->cleardb_url . ';port=3306;',  $this->cleardb_db,
-          $this->cleardb_username, $this->cleardb_password
-      );
-      $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }catch(PDOException $e){
-      echo 'connection error' . $e->getMessage();
-    }
+  $this->conn = mysqli_connect($this->cleardb_server, $this->cleardb_username, $this->cleardb_password, $this->cleardb_db);
+  //creating new PDO object
+    // try {
+    //   $this->conn = new PDO(
+    //     'mysql:host=' . $this->cleardb_url . ';port=8080;dbname=' . $this->cleardb_db,
+    //       $this->cleardb_username, $this->cleardb_password
+    //   );
+    //   $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // }catch(PDOException $e){
+    //   echo 'connection error' . $e->getMessage();
+    // }
     return $this->conn;
   }
 }
